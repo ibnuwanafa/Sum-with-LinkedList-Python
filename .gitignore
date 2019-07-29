@@ -1,104 +1,42 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
+import math 
+​
+class Sum:
+    tsum= None
+    
+class Node:
+    def __init__(self,data):
+        self.data= data
+        self.next= None
+        
+        
+def push(head,data):
+    if not head:
+        return Node(data)
+    
+    new_node = Node(data)
+    new_node.next= head
+    head = new_node
+    return head
+def sumOfNode(head,S):
+    
+    if not head:
+        return
+    
+    sumOfNode(head.next,S)
+    S.tsum+= head.data
+    
+def sumOfNodesUtil(head):
+    S= Sum()
+    S.tsum = 0
+    sumOfNode(head,S)
+    
+    return S.tsum
+​
+if __name__=='__main__': 
+    head = None
+    
+    head = push(head, 9) 
+    head = push(head, 10) 
+    head = push(head, 1) 
+    print("Hasilnya Adalah = {}" .  
+           format(sumOfNodesUtil(head))) 
